@@ -64,21 +64,6 @@ Rebuild in the same way whenever someone joins or leaves, after changing the use
 3. Open **Settings**, then **Pages**. Set Source to **Deploy from a branch**, Branch to **main** and the folder to **/ (root)**, then select **Save**.
 4. After a few minutes the site address appears there, for example `https://your-name.github.io/pc-dashboard/`.
 
-## Showing it on a SharePoint page
-
-SharePoint does not run HTML files from a document library. Its **Embed** web part only accepts a web address inside iframe code, which is why the dashboard is hosted on GitHub Pages and framed in SharePoint.
-
-1. **Allow the address (site owner, once per site):** select the **Settings** gear, then **Site information**, then **View all site settings**. Under Site Collection Administration, open **HTML Field Security**. Choose **Allow contributors to insert iframes only from the following domains**, add `github.io`, and select **OK**.
-2. **Add the web part:** edit the SharePoint page, add an **Embed** web part, and paste the code below into **Website address or embed code**. Use your own address. Step 5 of the publisher can also write this code for you.
-
-   ```html
-   <iframe src="https://your-name.github.io/pc-dashboard/" width="100%" height="900" frameborder="0" style="border:0" title="Project deliverables dashboard"></iframe>
-   ```
-
-3. Republish the page. Viewers sign in inside the frame. The **Open in new tab** button, shown only inside SharePoint, opens the full-screen version.
-
-Use a full-width section on the SharePoint page so the dashboard has room. A height of 900 to 1100 pixels works well.
-
 ## Security
 
 - The task data is encrypted with AES-256-GCM. Each user's ID and password derive a key (PBKDF2-SHA-256, 250,000 rounds) that unlocks the data. Passwords are never stored in the file.
